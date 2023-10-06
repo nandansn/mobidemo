@@ -52,14 +52,35 @@ server.post('/api/process-fpx', (req, res) => {
 
   // Here you can perform any processing required and return a success response
   // For now, we'll simply return a success message
-   response = {
-    success: true,
-    message: 'Notification received successfully!',
-    txnId: txnId,
-    sellerId: sellerId
-  };
-  res.status(200).json(response);
+
+  let timeout = 0;
+  
+  // condtion to test delayed response
+  if (txnId === "1234") {
+    setTimeout(() => {
+      const response = {
+        success: true,
+        message: 'Notification received successfully after a 40-second delay!',
+        txnId: txnId,
+        sellerId: sellerId
+      };
+      res.status(200).json(response);
+    }, 20000);
+  } else {
+    // success response immediate
+    response = {
+      success: true,
+      message: 'Notification received successfully!',
+      txnId: txnId,
+      sellerId: sellerId
+    };
+    res.status(200).json(response);
+  }
+
+ 
+   
 } else {
+  // failure response for txn id 0, empty and not passing
   response = {
     success: false,
     message: 'Notification failed! Transaction ID is invalid',
