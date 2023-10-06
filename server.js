@@ -35,10 +35,16 @@ startServer();
 // Use middleware to parse JSON requests
 server.use(bodyParser.json());
 
-// Define a route to handle POST requests with the JSON data
+
 server.post('/api/process-fpx', (req, res) => {
-  // Assuming the JSON data is sent in the request body
-  const requestData = req.body;
+  
+  const hostDetails = {
+    host: req.headers.host,
+    origin: req.headers.origin,
+    referer: req.headers.referer,
+    userAgent: req.headers['user-agent'],
+  };  
+  console.log(hostDetails);
   const txnId = req.body["fpx_fpxTxnId"]
   const sellerId = req.body["fpx_sellerId"]
 
@@ -46,19 +52,16 @@ server.post('/api/process-fpx', (req, res) => {
 
   console.log(service);
   
-  let response = {};
+  let response = {hostDetails: hostDetails};
 
   if (txnId && txnId !== "" && txnId !== "0") {
 
-  // Here you can perform any processing required and return a success response
-  // For now, we'll simply return a success message
 
-  let timeout = 0;
   
   // condtion to test delayed response
   if (txnId === "1234") {
     setTimeout(() => {
-      const response = {
+       response.data = {
         success: true,
         message: 'Notification received successfully after a 40-second delay!',
         txnId: txnId,
@@ -68,7 +71,7 @@ server.post('/api/process-fpx', (req, res) => {
     }, 20000);
   } else {
     // success response immediate
-    response = {
+    response.data = {
       success: true,
       message: 'Notification received successfully!',
       txnId: txnId,
@@ -81,7 +84,7 @@ server.post('/api/process-fpx', (req, res) => {
    
 } else {
   // failure response for txn id 0, empty and not passing
-  response = {
+  response.data = {
     success: false,
     message: 'Notification failed! Transaction ID is invalid',
   };
