@@ -71,7 +71,7 @@ server.post('/api/process-fpx', (req, res) => {
       };
       res.status(200).json(response);
     }, 20000);
-  }  if(txnId === "-1") {
+  } else if(txnId === "-1") {
     response.data ="No Response"
     console.log(response)
   } else {
