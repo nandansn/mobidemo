@@ -14,7 +14,7 @@ server.use(express.json());
 
 const startServer = async () => {
   try {
-  
+
     let port = process.env.PORT || 3000;
     server.listen(port, () => {
       console.log(`listening on port ${port}`);
@@ -50,73 +50,73 @@ server.use(bodyParser.json());
 
 
 
-// server.post('/api/process-fpx', (req, res) => {
-  
-//   const hostDetails = {
-//     host: req.headers.host,
-//     origin: req.headers.origin,
-//     referer: req.headers.referer,
-//     userAgent: req.headers['user-agent'],
-//   };  
-//   console.log(hostDetails);
-//   const txnId = req.body["fpx_fpxTxnId"]
-//   const sellerId = req.body["fpx_sellerId"]
+server.get('/api/process-fpx', (req, res) => {
 
-//   let service = req.body["service"]
+  const hostDetails = {
+    host: req.headers.host,
+    origin: req.headers.origin,
+    referer: req.headers.referer,
+    userAgent: req.headers['user-agent'],
+  };
+  console.log(hostDetails);
+  const txnId = req.body["fpx_fpxTxnId"]
+  const sellerId = req.body["merchantName"]
 
-//   console.log(service);
-  
-//   let response = {hostDetails: hostDetails};
+  let service = req.body["service"]
 
-//   if (txnId && txnId !== "" && txnId !== "0") {
+  console.log(service);
 
-  
-  
-//   // condtion to test delayed response
-//   if (txnId === "1234") {
-//     setTimeout(() => {
-//        response.data = {
-//         success: true,
-//         message: 'Notification received successfully after a 40-second delay!',
-//         txnId: txnId,
-//         sellerId: sellerId
-//       };
-//       res.status(200).json(response);
-//     }, 20000);
-//   } else if(txnId === "-1") {
-//     response.data ="No Response"
-//     console.log(response)
-//   } else {
-//     // success response immediate
-//     response.data = {
-//       success: true,
-//       message: 'Notification received successfully!',
-//       txnId: txnId,
-//       sellerId: sellerId
-//     };
-//     res.status(200).json(response);
-//   }
+  let response = { hostDetails: hostDetails };
 
- 
-   
-// } else {
-//   // failure response for txn id 0, empty and not passing
-//   response.data = {
-//     success: false,
-//     message: 'Notification failed! Transaction ID is invalid',
-//   };
-//   res.status(400).json(response)
-// }
-
-  
-// });
+  if (txnId && txnId !== "" && txnId !== "0") {
 
 
-server.post("/api/process-fpx", (req, res) => {
+
+    // condtion to test delayed response
+    if (txnId === "1234") {
+      setTimeout(() => {
+        response.data = {
+          success: true,
+          message: 'Notification received successfully after a 40-second delay!',
+          txnId: txnId,
+          sellerId: sellerId
+        };
+        res.status(200).json(response);
+      }, 20000);
+    } else if (txnId === "-1") {
+      response.data = "No Response"
+      console.log(response)
+    } else {
+      // success response immediate
+      response.data = {
+        success: true,
+        message: 'Notification received successfully!',
+        txnId: txnId,
+        sellerId: sellerId
+      };
+      res.status(200).json(response);
+    }
+
+
+
+  } else {
+    // failure response for txn id 0, empty and not passing
+    response.data = {
+      success: false,
+      message: 'Notification failed! Transaction ID is invalid',
+    };
+    res.status(400).json(response)
+  }
+
+
+});
+
+
+server.get("/api/process-fpx", (req, res) => {
 
   res.status(200).json({
     status: "OK",
   })
 
- })
+})
 
