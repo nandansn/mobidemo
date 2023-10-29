@@ -143,3 +143,9 @@ server.get('/api/process-fpx', (req, res) => {
   }
 });
 
+server.post('api/PaymentAPI/v3.0/PostCreditTransfer/:SRCPREFIXID',(req, res) => {
+
+  const sourceRefID = req.params.SRCPREFIXID;
+  console.log(sourceRefID);
+  res.status(200).json({ ResponseCode : '0000', ResponseMessage : 'success '})
+ })
