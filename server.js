@@ -150,8 +150,10 @@ server.post('api/PaymentAPI/v3.0/PostCreditTransfer/:SRCPREFIXID',(req, res) => 
   res.status(200).json({ ResponseCode : '0000', ResponseMessage : 'success '})
  })
 
- server.post('api/PaymentAPI/v3.0/GetAccountEnquiry',(req, res) => {
+ server.post('api/PaymentAPI/v3.0/GetAccountEnquiry/:SRCPREFIXID',(req, res) => {
 
+  const sourceRefID = req.params.SRCPREFIXID;
+  console.log(sourceRefID);
 
   res.status(200).json({ ResponseCode : '0000', ResponseMessage : 'success'})
  })
