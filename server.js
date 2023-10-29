@@ -150,8 +150,8 @@ server.post('api/PaymentAPI/v3.0/PostCreditTransfer/:SRCPREFIXID',(req, res) => 
   res.status(200).json({ ResponseCode : '0000', ResponseMessage : 'success '})
  })
 
- server.get('api/PaymentAPI/v3.0/GetAccountEnquiry/',(req, res) => {
+ server.post('api/PaymentAPI/v3.0/GetAccountEnquiry',(req, res) => {
 
 
-  res.status(200).json({ ResponseCode : '0000', ResponseMessage : 'success '})
+  res.status(200).json({ ResponseCode : '0000', ResponseMessage : 'success'})
  })
