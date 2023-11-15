@@ -5,10 +5,10 @@ const payoutRouter = express.Router();
 payoutRouter.post('/payoutservice', function (req, res) {
 
 
-    let { bankName, subMID, amount, customerName } = req.body;
+    let { bankName, subMID, amount, customerName, payoutid } = req.body;
 
     console.log(bankName);
-    ''
+    
 
     if (bankName !== 'Ambank Malaysia Berhad') {
 
@@ -42,7 +42,16 @@ payoutRouter.post('/payoutservice', function (req, res) {
             "responseData": {}
         })
 
-    } else {
+    } else if (payoutid === '866434345') {
+        res.status(201).json({
+            "responseCode": "0001",
+            "responseMessage": "FAILURE",
+            "responseDescription": "PayoutId Already Exists",
+            "responseData": {}
+        })
+    }
+    
+    else {
         res.status(201).json({
             "responseCode": "0000",
             "responseMessage": "SUCCESS",
