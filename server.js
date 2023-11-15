@@ -3,6 +3,8 @@ const express = require("express");
 const morgan = require("morgan");
 const bodyParser = require('body-parser');
 
+const { payoutRouter } = require('./routers/payout-service')
+
 const server = express();
 
 
@@ -10,7 +12,10 @@ const server = express();
 server.use(morgan("tiny"));
 server.use(express.json());
 
-// start server only db is started
+server.use(bodyParser.json());
+
+server.use('/api/v1',payoutRouter)
+
 
 const startServer = async () => {
   try {
@@ -27,7 +32,7 @@ const startServer = async () => {
 
 startServer();
 
-server.use(bodyParser.json());
+
 
 server.get('/api/process-fpx-no-re', (req, res) => {
 
