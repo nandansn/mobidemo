@@ -25,12 +25,15 @@ const startServer = async () => {
 };
 
 
-
 startServer();
 
-
-
 server.use(bodyParser.json());
+
+server.get('/api/process-fpx-no-re', (req, res) => {
+
+  console.log('no response from server')
+  
+});
 
 server.get('/api/process-fpx', (req, res) => {
 
@@ -57,8 +60,14 @@ server.post('/api/PaymentAPI/v3.0/PostCreditTransfer/:SRCPREFIXID',(req, res) =>
 
   const sourceRefID = req.params.SRCPREFIXID;
   console.log(sourceRefID);
-  res.status(200).json({ ResponseCode : '0000', ResponseMessage : 'success', transactionStatus:'ACSP', debitorBalance: '25000'})
+
+  if (sourceRefID === '-1') {
+    res.status(200).json({ ResponseCode : '0001', ResponseMessage : 'failure', transactionStatus:'ACSP', debitorBalance: '0'})
+  } else {
+    res.status(200).json({ ResponseCode : '0000', ResponseMessage : 'success', transactionStatus:'ACSP', debitorBalance: '25000'}) 
+  }
  })
+
 
  server.post('/api/PaymentAPI/v3.0/GetAccountEnquiry/:SRCPREFIXID',(req, res) => {
 
@@ -70,4 +79,20 @@ server.post('/api/PaymentAPI/v3.0/PostCreditTransfer/:SRCPREFIXID',(req, res) =>
   console.log(sourceRefID);
 
   res.status(200).json({ ResponseCode : '0000', ResponseMessage : 'success'})
+ })
+
+
+
+ server.get('/api/v1/payout/:PAYOUT_ID',(req, res) => {
+
+  const payoutId = req.params.PAYOUT_ID;
+  console.log({"payout_id":payoutId});
+
+  if (payoutId === 'PO_0000') {
+    res.status(404).json({ ResponseCode : '0001', ResponseMessage : 'FAILURE', responseDescription:'Payout Failed', failureReason: 'Non-Active Status'})
+  } else {
+    res.status(200).json({ ResponseCode : '0000', ResponseMessage : 'SUCCESS', responseDescription:'Registered Successfully Payout', "responseData": {
+      "trxId": payoutId
+  }}) 
+  }
  })
