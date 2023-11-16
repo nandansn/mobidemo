@@ -96,8 +96,18 @@ server.post('/api/PaymentAPI/v3.0/PostCreditTransfer/:SRCPREFIXID',(req, res) =>
   if (payoutId === 'PO_0000') {
     res.status(404).json({ ResponseCode : '0001', ResponseMessage : 'FAILURE', responseDescription:'Payout Failed', failureReason: 'Non-Active Status'})
   } else {
-    res.status(200).json({ ResponseCode : '0000', ResponseMessage : 'SUCCESS', responseDescription:'Registered Successfully Payout', "responseData": {
-      "trxId": payoutId
-  }}) 
+    res.status(200).json({
+      "ResponseCode": "0000",
+      "ResponseMessage": "SUCCESS",
+      "responseDescription": "Retrieving Payout Records was Successful",
+      "responseData": {
+          "CustomerName": "SMITH",
+          "MerchantName": "SWEET CORNER",
+          "TransactionId": payoutId,
+          "Amount": "10.22",
+          "BankName": "Ambank Malaysia Berhad",
+           "BankAccNo": "8881048358879"
+      }
+  }) 
   }
  })

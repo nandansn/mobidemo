@@ -49,9 +49,7 @@ payoutRouter.post('/payoutservice', function (req, res) {
             "responseDescription": "PayoutId Already Exists",
             "responseData": {}
         })
-    }
-    
-    else {
+    } else {
         res.status(201).json({
             "responseCode": "0000",
             "responseMessage": "SUCCESS",
