@@ -108,6 +108,11 @@ server.post('/api/PaymentAPI/v3.0/PostCreditTransfer/:SRCPREFIXID',(req, res) =>
       }
   }) 
   } else {
-    res.status(404).json({ responseCode : '0001', responseMessage : 'FAILURE', responseDescription:'Payout Failed', failureReason: 'Non-Active Status'})
+    res.status(200).json({
+      "responseCode": "0001",
+      "responseMessage": "FAILURE",
+      "responseDescription": "Payout Failed",
+      "failureReason": "Transaction Invalid"
+  })
   }
  })
