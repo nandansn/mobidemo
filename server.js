@@ -93,9 +93,7 @@ server.post('/api/PaymentAPI/v3.0/PostCreditTransfer/:SRCPREFIXID',(req, res) =>
   const payoutId = req.params.PAYOUT_ID;
   console.log({"payout_id":payoutId});
 
-  if (payoutId === 'PO_0000') {
-    res.status(404).json({ ResponseCode : '0001', ResponseMessage : 'FAILURE', responseDescription:'Payout Failed', failureReason: 'Non-Active Status'})
-  } else {
+  if (payoutId === 'PO_23111511156416863') {
     res.status(200).json({
       "ResponseCode": "0000",
       "ResponseMessage": "SUCCESS",
@@ -109,5 +107,7 @@ server.post('/api/PaymentAPI/v3.0/PostCreditTransfer/:SRCPREFIXID',(req, res) =>
            "BankAccNo": "8881048358879"
       }
   }) 
+  } else {
+    res.status(404).json({ ResponseCode : '0001', ResponseMessage : 'FAILURE', responseDescription:'Payout Failed', failureReason: 'Non-Active Status'})
   }
  })
