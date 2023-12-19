@@ -5,6 +5,9 @@ const bodyParser = require('body-parser');
 
 const { payoutRouter } = require('./routers/payout-service')
 
+
+const { amBankRouter } = require('./routers/ambank-payout')
+
 const server = express();
 
 
@@ -15,6 +18,7 @@ server.use(express.json());
 server.use(bodyParser.json());
 
 server.use('/api/v1',payoutRouter)
+server.use('/PaymentAPI/v3.0',amBankRouter)
 
 
 const startServer = async () => {
