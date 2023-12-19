@@ -17,4 +17,19 @@ amBankRouter.get('/GetAccountEnquiry/:srcRefNo', function (req, res) {
 
 });
 
+amBankRouter.post('/PostCreditTransfer/:srcRefNo', function (req, res) {
+
+    const sourceRefID = req.params.srcRefNo;
+
+    res.status(201).json({
+        "debitorBalance": "19999999.87",
+        "debitorCurrency": "MYR",
+        "debitorAccountName": "Mobi UAT testing account name",
+        "debitorIslamInd": "C",
+        "creditorAccountName": "Mobi UAT testing creditor name",
+        "transactionStatus": "ACSP"
+        })
+    
+})
+
 module.exports = { amBankRouter };
