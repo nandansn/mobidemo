@@ -2,7 +2,7 @@ const express = require("express");
 const amBankRouter = express.Router();
 
 
-amBankRouter.get('/GetAccountEnquiry/:srcRefNo', function (req, res) {
+amBankRouter.post('/GetAccountEnquiry/:srcRefNo', function (req, res) {
 
     const sourceRefID = req.params.srcRefNo;
 
