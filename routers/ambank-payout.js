@@ -21,7 +21,7 @@ amBankRouter.post('/PostCreditTransfer/:srcRefNo', function (req, res) {
 
     const sourceRefID = req.params.srcRefNo;
 
-    res.status(201).json({
+    res.status(200).json({
         "debitorBalance": "19999999.87",
         "debitorCurrency": "MYR",
         "debitorAccountName": "Mobi UAT testing account name",
