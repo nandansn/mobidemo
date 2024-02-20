@@ -68,7 +68,7 @@ razorpayRouter.post('/payoutInProgress', function (req, res) {
 
   console.log(bankName);
 
-  res.status(201).json(
+  res.status(200).json(
     {'Status': ['201'], 'Response': [{'duitnow_payout_batch_date': ['Tue Feb 20 00:00:00 MYT 2024'], 'duitnow_payout_batch_status_code': ['11'], 'duitnow_payout_batch': ['BULKPAY_12345620022024008'], 'duitnow_payout_batch_status': ['TRANSFER_IN_PROGRESS']}], 'Date': ['Mon Feb 19 23:59:44 MYT 2024']}
   )
 
@@ -82,7 +82,7 @@ razorpayRouter.post('/payoutSuccess', function (req, res) {
 
   console.log(bankName);
 
-  res.status(201).json(
+  res.status(200).json(
     {'Status': ['201'], 'Response': [{'duitnow_payout_batch_date': ['Tue Feb 20 00:00:00 MYT 2024'], 'duitnow_payout_batch_status_code': ['10'], 'duitnow_payout_batch': ['BULKPAY_12345620022024008'], 'duitnow_payout_batch_status': ['PROCESSED_ALL_SUCCESSFUL']}], 'Date': ['Mon Feb 19 23:59:44 MYT 2024']}
   )
 
@@ -95,7 +95,7 @@ razorpayRouter.post('/payoutFailed', function (req, res) {
 
   console.log(bankName);
 
-  res.status(201).json(
+  res.status(200).json(
     {'Status': ['201'], 'Response': [{'duitnow_payout_batch_date': ['Tue Feb 20 00:00:00 MYT 2024'], 'duitnow_payout_batch_status_code': ['9'], 'duitnow_payout_batch': ['BULKPAY_12345620022024008'], 'duitnow_payout_batch_status': ['REJECTED']}], 'Date': ['Mon Feb 19 23:59:44 MYT 2024']}
   )
 
