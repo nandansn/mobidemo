@@ -179,6 +179,85 @@ razorpayRouter.post('/payoutStatus/Success', function (req, res) {
 
 });
 
+razorpayRouter.post('/payoutStatus/Inprogress', function (req, res) {
+
+
+  let { bankName, subMID, amount, customerName, payoutid } = req.body;
+
+  console.log(bankName);
+
+  res.status(200).json(
+    {
+      "Status": [
+        "201"
+      ],
+      "Response": [
+        {
+          "batch_collection_status": [
+            "TRANSFER_IN_PROGRESS"
+          ],
+          "batch_id": [
+            "BULKPAY_08674926122023002"
+          ],
+          "batch_collection_date": [
+            "2023-12-26 00:00:00.0"
+          ],
+          "batch_collection_status_code": [
+            "11"
+          ],
+          "list": [
+            [
+              {
+                "payout_details": [
+                  "OCBC Test 2"
+                ],
+                "customer_uid": [
+                  null
+                ],
+                "response_batch": [
+                  null
+                ],
+                "payout_status": [
+                  "TRANSFER_IN_PROGRESS"
+                ],
+                "payout_date": [
+                  "2023-12-26 00:00:00.0"
+                ],
+                "payout_status_code": [
+                  "10"
+                ],
+                "response_date": [
+                  null
+                ],
+                "payee_name": [
+                  "Bradley"
+                ],
+                "recipient_reference": [
+                  "Test Curlec"
+                ],
+                "payout_amount": [
+                  "1.00"
+                ],
+                "internal_reference": [
+                  null
+                ]
+              }
+            ]
+          ]
+        }
+      ],
+      "Total": [
+        1
+      ],
+      "Date": [
+        "Mon Feb 19 16:16:13 MYT 2024"
+      ]
+    }
+  )
+
+});
+
+
 
 
 module.exports = { razorpayRouter };
