@@ -2,40 +2,40 @@ const express = require("express");
 const razorpayRouter = express.Router();
 
 
-razorpayRouter.post('/payee', function (req, res) {
+// razorpayRouter.post('/payee', function (req, res) {
 
 
-  let { bankName, subMID, amount, customerName, payoutid } = req.body;
+//   let { bankName, subMID, amount, customerName, payoutid } = req.body;
 
-  console.log(bankName);
+//   console.log(bankName);
 
-  res.status(200).json(
-    [
-      {
-        "payee_status": "ACTIVE",
-        "payee_name": "testPayee10",
-        "bank_accounts": [
-          {
-            "bank_code": "TEST0021",
-            "account_type": "CURRENT_ACCOUNT",
-            "account_number": "1324",
-            "account_id": 5434213,
-            "is_active": true,
-            "account_holder_name": "test two",
-            "passport_country": null,
-            "id_type": "NRIC",
-            "id_value": "1234",
-            "payment_method": 2
-          }
-        ]
-      }
-    ]
-  )
-
-
+//   res.status(200).json(
+//     [
+//       {
+//         "payee_status": "ACTIVE",
+//         "payee_name": "testPayee10",
+//         "bank_accounts": [
+//           {
+//             "bank_code": "TEST0021",
+//             "account_type": "CURRENT_ACCOUNT",
+//             "account_number": "1324",
+//             "account_id": 5434213,
+//             "is_active": true,
+//             "account_holder_name": "test two",
+//             "passport_country": null,
+//             "id_type": "NRIC",
+//             "id_value": "1234",
+//             "payment_method": 2
+//           }
+//         ]
+//       }
+//     ]
+//   )
 
 
-});
+
+
+// });
 
 razorpayRouter.post('/payout', function (req, res) {
 
@@ -101,7 +101,27 @@ razorpayRouter.post('/payoutFailed', function (req, res) {
 
 });
 
-razorpayRouter.post('/payoutStatus/Success', function (req, res) {
+razorpayRouter.post('/payee', function (req, res) {
+
+
+  let message = req.query.message;
+  let code = req.query.code;
+
+  if (code === '409') {
+    if (message.includes('Invalid bank code')) {
+      res.status(200).json(
+        {"Status":["409"],"Message":["Invalid bank code"],"Date":["Thu Feb 22 10:41:07 MYT 2024"]}
+      )
+    }
+  } else {
+    res.status(200).json({"Status":["201"],"Message":["Success"],"Date":["Thu Feb 22 10:41:07 MYT 2024"]})
+  }
+
+  
+
+});
+
+razorpayRouter.post('/payoutStatus/Inprogress', function (req, res) {
 
 
   let { bankName, subMID, amount, customerName, payoutid } = req.body;
@@ -116,7 +136,7 @@ razorpayRouter.post('/payoutStatus/Success', function (req, res) {
       "Response": [
         {
           "batch_collection_status": [
-            "PROCESSED_ALL_SUCCESSFUL"
+            "TRANSFER_IN_PROGRESS"
           ],
           "batch_id": [
             "BULKPAY_08674926122023002"
@@ -125,7 +145,7 @@ razorpayRouter.post('/payoutStatus/Success', function (req, res) {
             "2023-12-26 00:00:00.0"
           ],
           "batch_collection_status_code": [
-            "10"
+            "11"
           ],
           "list": [
             [
@@ -140,13 +160,13 @@ razorpayRouter.post('/payoutStatus/Success', function (req, res) {
                   null
                 ],
                 "payout_status": [
-                  "SUCCESSFULLY_COMPLETE"
+                  "TRANSFER_IN_PROGRESS"
                 ],
                 "payout_date": [
                   "2023-12-26 00:00:00.0"
                 ],
                 "payout_status_code": [
-                  "0"
+                  "10"
                 ],
                 "response_date": [
                   null
@@ -179,7 +199,7 @@ razorpayRouter.post('/payoutStatus/Success', function (req, res) {
 
 });
 
-razorpayRouter.post('/payoutStatus/Inprogress', function (req, res) {
+razorpayRouter.post('/payoutStatus/Failed', function (req, res) {
 
 
   let { bankName, subMID, amount, customerName, payoutid } = req.body;
@@ -194,7 +214,7 @@ razorpayRouter.post('/payoutStatus/Inprogress', function (req, res) {
       "Response": [
         {
           "batch_collection_status": [
-            "TRANSFER_IN_PROGRESS"
+            "PROCESSED_ALL_COMPLETED"
           ],
           "batch_id": [
             "BULKPAY_08674926122023002"
