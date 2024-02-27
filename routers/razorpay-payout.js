@@ -54,7 +54,7 @@ razorpayRouter.post('/payoutInProgress', function (req, res) {
 });
 
 
-razorpayRouter.post('/payouts/status?batch=BULKRHB_12345622022024059', function (req, res) {
+razorpayRouter.post('/status?batch=BULKRHB_12345622022024059', function (req, res) {
 
 
   let { batch, subMID, amount, customerName, payoutid } = req.query;
