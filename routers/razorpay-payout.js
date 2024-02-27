@@ -57,7 +57,7 @@ const razorpayRouter = express.Router();
 razorpayRouter.post('/payout', function (req, res) {
 
 
-  let { payoutList, subMID, amount, customerName, payoutid } = req.params;
+  let { payoutList, subMID, amount, customerName, payoutid } = req.query;
 
   console.log(payoutList);
 
