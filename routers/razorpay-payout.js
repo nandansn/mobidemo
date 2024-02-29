@@ -65,9 +65,9 @@ razorpayRouter.post('/payout', function (req, res) {
     res.status(200).json({ "Status": ["201"], "Response": [{ "ibg_payout_batch_status_code": ["10"], "ibg_payout_batch_status": ["PROCESSED_ALL_SUCCESSFUL"], "ibg_payout_batch": ["BULKPAY_12345626022024083"], "ibg_payout_batch_date": ["Mon Feb 26 14:38:02 MYT 2024"] }], "Date": ["Mon Feb 26 14:38:10 MYT 2024"] })
   } else {
 
-  res.status(200).json(
-    { "Status": ["201"], "Response": [{ "instant_payout_batch_status": ["PROCESSED_ALL_SUCCESSFUL"], "instant_payout_batch_status_code": ["10"], "instant_payout_batch_date": ["Wed Feb 21 15:08:35 MYT 2024"], "instant_payout_batch": ["BULKPAY_12345621022024007"] }], "Date": ["Wed Feb 21 15:08:42 MYT 2024"] }
-  )
+    res.status(200).json(
+      { "Status": ["201"], "Response": [{ "instant_payout_batch_status": ["PROCESSED_ALL_SUCCESSFUL"], "instant_payout_batch_status_code": ["10"], "instant_payout_batch_date": ["Wed Feb 21 15:08:35 MYT 2024"], "instant_payout_batch": ["BULKPAY_12345621022024007"] }], "Date": ["Wed Feb 21 15:08:42 MYT 2024"] }
+    )
 
   }
 
@@ -107,9 +107,9 @@ razorpayRouter.post('/payee', function (req, res) {
 });
 
 razorpayRouter.post('/status/success', function (req, res) {
-   res.status(200).json({"Status":["201"],"Response":[{"batch_collection_status":["PROCESSED_ALL_SUCCESSFUL"],"batch_id":["BULKPAY_12345621022024008"],"batch_collection_date":["2024-02-21 15:38:45.0"],"batch_collection_status_code":["10"],"list":[[{"payout_details":["payout from MOBI FI"],"customer_uid":[null],"response_batch":[null],"payout_status":["SUCCESSFULLY_COMPLETE"],"payout_date":["2024-02-21 15:38:45.0"],"payout_status_code":["0"],"response_date":[null],"payee_name":["Mobi Asia Sdn Bhd-CIBBMYKL-8007810373"],"recipient_reference":["2102202417HHD421637"],"payout_amount":["21.21"],"internal_reference":[null]}]]}],"Total":[1],"Date":["Wed Feb 21 15:38:54 MYT 2024"]})
-      
-  });
+  res.status(200).json({ "Status": ["201"], "Response": [{ "batch_collection_status": ["PROCESSED_ALL_SUCCESSFUL"], "batch_id": ["BULKPAY_12345621022024008"], "batch_collection_date": ["2024-02-21 15:38:45.0"], "batch_collection_status_code": ["10"], "list": [[{ "payout_details": ["payout from MOBI FI"], "customer_uid": [null], "response_batch": [null], "payout_status": ["SUCCESSFULLY_COMPLETE"], "payout_date": ["2024-02-21 15:38:45.0"], "payout_status_code": ["0"], "response_date": [null], "payee_name": ["Mobi Asia Sdn Bhd-CIBBMYKL-8007810373"], "recipient_reference": ["2102202417HHD421637"], "payout_amount": ["21.21"], "internal_reference": [null] }]] }], "Total": [1], "Date": ["Wed Feb 21 15:38:54 MYT 2024"] })
+
+});
 
 razorpayRouter.post('/payoutStatus/Inprogress', function (req, res) {
 
@@ -267,7 +267,36 @@ razorpayRouter.post('/payoutStatus/Failed', function (req, res) {
 
 });
 
+razorpayRouter.post('/balance', function (req, res) {
 
+  let { amount } = req.body;
+
+
+  amount = amount ? amount : "10000.00"
+
+  res.status(200).json(
+    {
+      "Status": [
+        "201"
+      ],
+      "Response": [
+        {
+          "merchant_name": [
+            "MOBI"
+          ],
+          "merchant_balance": [
+            amount
+          ]
+        }
+      ],
+      "Date": [
+        "Mon Feb 19 18:54:49 MYT 2024"
+      ]
+    }
+
+  )
+
+});
 
 
 module.exports = { razorpayRouter };
