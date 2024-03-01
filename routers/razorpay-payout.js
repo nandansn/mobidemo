@@ -273,7 +273,7 @@ razorpayRouter.post('/payoutStatus/Failed', function (req, res) {
 razorpayRouter.post('/balance', function (req, res) {
 
 
-  let { amount } = req.q;
+  let { amount } = req.query;
 
 
   amount = amount ? amount : "10000.00"
