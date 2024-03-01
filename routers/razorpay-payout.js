@@ -2,6 +2,9 @@ const express = require("express");
 const razorpayRouter = express.Router();
 
 
+
+
+
 // razorpayRouter.post('/payee', function (req, res) {
 
 
@@ -269,7 +272,8 @@ razorpayRouter.post('/payoutStatus/Failed', function (req, res) {
 
 razorpayRouter.post('/balance', function (req, res) {
 
-  let { amount } = req.body;
+
+  let { amount } = req.q;
 
 
   amount = amount ? amount : "10000.00"
