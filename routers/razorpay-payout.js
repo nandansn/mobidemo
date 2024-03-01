@@ -276,26 +276,11 @@ razorpayRouter.post('/balance', function (req, res) {
   let { amount } = req.query;
 
 
-  amount = amount ? amount : "10013.21"
+  amount = amount ? amount : "13.21"
 
   res.status(200).json(
     {
-      "Status": [
-        "201"
-      ],
-      "Response": [
-        {
-          "merchant_name": [
-            "MOBI"
-          ],
-          "balance": [
-            amount
-          ]
-        }
-      ],
-      "Date": [
-        "Mon Feb 19 18:54:49 MYT 2024"
-      ]
+      
     }
 
   )
