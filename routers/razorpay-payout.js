@@ -276,7 +276,7 @@ razorpayRouter.post('/balance', function (req, res) {
   let { amount } = req.query;
 
 
-  amount = amount ? amount : "10000.00"
+  amount = amount ? amount : "10013.21"
 
   res.status(200).json(
     {
@@ -288,7 +288,7 @@ razorpayRouter.post('/balance', function (req, res) {
           "merchant_name": [
             "MOBI"
           ],
-          "balance": [
+          "merchant_balance": [
             amount
           ]
         }
