@@ -273,10 +273,10 @@ razorpayRouter.post('/payoutStatus/Failed', function (req, res) {
 razorpayRouter.post('/balance', function (req, res) {
 
 
-  let { amount } = req.query;
+  let { balance } = req.query;
 
 
-  amount = amount ? amount : "13.21"
+  balance = balance ? balance : "13.21"
 
   res.status(200).json(
     {
@@ -289,7 +289,7 @@ razorpayRouter.post('/balance', function (req, res) {
                   "MOBI"
               ],
               "merchant_balance": [
-                amount
+                balance
               ]
           }
       ],
