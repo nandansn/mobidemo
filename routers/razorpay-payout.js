@@ -289,7 +289,7 @@ razorpayRouter.post('/balance', function (req, res) {
                   "MOBI"
               ],
               "merchant_balance": [
-                balance
+                amount
               ]
           }
       ],
