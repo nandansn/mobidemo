@@ -273,32 +273,34 @@ razorpayRouter.post('/payoutStatus/Failed', function (req, res) {
 razorpayRouter.post('/balance', function (req, res) {
 
 
-  let { amount } = req.query;
+  setTimeout(function () {
+    let { amount } = req.query;
 
+    amount = amount ? amount : "750000.00"
 
-  amount = amount ? amount : "750000.00"
-
-  res.status(200).json(
-    {
-      "Status": [
+    res.status(200).json(
+      {
+        "Status": [
           "201"
-      ],
-      "Response": [
+        ],
+        "Response": [
           {
-              "merchant_name": [
-                  "MOBI"
-              ],
-              "merchant_balance": [
-                amount
-              ]
+            "merchant_name": [
+              "MOBI"
+            ],
+            "merchant_balance": [
+              amount
+            ]
           }
-      ],
-      "Date": [
+        ],
+        "Date": [
           "Mon Feb 19 18:54:49 MYT 2024"
-      ]
-  }
+        ]
+      }
 
-  )
+    )
+  }, 14000)
+
 
 });
 
