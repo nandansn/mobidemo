@@ -299,7 +299,7 @@ razorpayRouter.post('/balance', function (req, res) {
       }
 
     )
-  }, 10000)
+  }, 12000)
 
 
 });
