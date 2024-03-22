@@ -65,7 +65,7 @@ razorpayRouter.post('/payout', function (req, res) {
   console.log(payoutList);
 
   res.status(200).json(
-    {"Status":["409"],"Message":["Instant Transfer : ERROR (could not extract ResultSet; nested exception is org.hibernate.exception.GenericJDBCException: could not extract ResultSet)"],"Date":["Mon Mar 18 21:25:31 MYT 2024"]
+    {"Status":["409"],"Message":["Instant Transfer : ERROR (could not extract ResultSet; nested exception is org.hibernate.exception.GenericJDBCException: could not extract ResultSet)"],"Date":["Mon Mar 18 21:25:31 MYT 2024"]}
   )
 
   // if (payoutList.includes('RHB')) {
