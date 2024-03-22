@@ -124,6 +124,7 @@ razorpayRouter.post('/status/failed', function (req, res) {
 res.status(200).json(
   {"Status":["409"],"Message":["Instant Transfer : ERROR (could not extract ResultSet; nested exception is org.hibernate.exception.GenericJDBCException: could not extract ResultSet)"],"Date":["Mon Mar 18 21:25:31 MYT 2024"]}
 )
+})
 
 razorpayRouter.post('/payoutStatus/Inprogress', function (req, res) {
 
@@ -316,4 +317,4 @@ razorpayRouter.post('/balance', function (req, res) {
 });
 
 
-module.exports = { razorpayRouter };
+module.exports = { razorpayRouter }
