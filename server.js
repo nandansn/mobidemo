@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 
 const { payoutRouter } = require('./routers/payout-service')
 const { razorpayRouter } = require('./routers/razorpay-payout')
+const { callBackRouter } = require('./routers/callback')
 
 
 const { amBankRouter } = require('./routers/ambank-payout')
@@ -21,6 +22,7 @@ server.use(bodyParser.json());
 server.use('/api/v1',payoutRouter)
 server.use('/api/PaymentAPI/v3.0',amBankRouter)
 server.use('/curlec-services/payouts',razorpayRouter)
+server.use('/merchant',callBackRouter)
 
 
 const startServer = async () => {
