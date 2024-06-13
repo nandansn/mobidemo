@@ -7,14 +7,14 @@ notificationRouter.post('/ipn', function (req, res) {
 
    
   
-    res.status(200).json(
+    res.status(201).json(
         {
-            "responseCode": "0000",
-            "responseMessage": "SUCCESS",
-            "responseDescription": "Registered Successfully Payout",   
-            "responseData": {
-                "trxId": "PO_24061306013111395"
-            }
+            "responseCode": "0000"
+            // "responseMessage": "SUCCESS",
+            // "responseDescription": "Registered Successfully Payout",   
+            // "responseData": {
+            //     "trxId": "PO_24061306013111395"
+            // }
         }
     )
   
