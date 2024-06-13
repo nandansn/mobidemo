@@ -5,7 +5,9 @@ const notificationRouter = express.Router();
 notificationRouter.post('/ipn', function (req, res) {
 
 
-   
+    let { responseData } = req.body;
+    
+    console.log(responseData)
   
     res.status(201).json(
         {
