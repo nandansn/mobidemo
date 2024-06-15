@@ -7,7 +7,7 @@ notificationRouter.post('/ipn', function (req, res) {
 
     let { responseData } = req.body;
     
-    console.log(responseData)
+    console.log(req.body)
   
     res.status(200).json(
         {
