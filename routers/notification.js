@@ -2,7 +2,7 @@ const express = require("express");
 const notificationRouter = express.Router();
 
 
-notificationRouter.post('/ipnn', function (req, res) {
+notificationRouter.post('/ipn', function (req, res) {
 
 
     let { responseData } = req.body;
