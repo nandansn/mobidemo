@@ -9,7 +9,7 @@ notificationRouter.post('/ipn', function (req, res) {
     
     console.log(responseData)
   
-    res.status(201).json(
+    res.status(200).json(
         {
             "responseCode": "0000"
             // "responseMessage": "SUCCESS",
