@@ -12,6 +12,8 @@ const { amBankRouter } = require('./routers/ambank-payout')
 
 const { notificationRouter } = require('./routers/notification')
 
+const { acctEnquiry } = require('./routers/account-enquiry')
+
 const server = express();
 
 
@@ -26,6 +28,7 @@ server.use('/api/PaymentAPI/v3.0',amBankRouter)
 server.use('/curlec-services/payouts',razorpayRouter)
 server.use('/mobi/payout',notificationRouter)
 server.use('/merchant',callBackRouter)
+server.use('/curlec-services/payouts/payee',acctEnquiry)
 
 
 const startServer = async () => {
