@@ -70,7 +70,7 @@ acctEnquiry.post('/enquiry', function (req, res) {
     custName = namesObject[thirdPartyAccountNo];
 
     if (thirdPartyAccountNo == "") {
-        res.status(201).json({
+        res.status(200).json({
             "Status": [
                 "201"
             ],
@@ -92,10 +92,8 @@ acctEnquiry.post('/enquiry', function (req, res) {
                 "Tue Aug 27 18:46:21 MYT 2024"
             ]
         })
-    }
-
-    if (thirdPartyAccountNo == "-1") {
-        res.status(201).json({
+    } else if (thirdPartyAccountNo == "-1") {
+        res.status(200).json({
             "Status": [
                 "201"
             ],
@@ -104,9 +102,7 @@ acctEnquiry.post('/enquiry', function (req, res) {
                 "Tue Aug 27 18:46:21 MYT 2024"
             ]
         })
-    }
-
-    if (thirdPartyAccountNo == "-2") {
+    } else if (thirdPartyAccountNo == "-2") {
         res.status(500).json({
             "Status": [
                 "500"
@@ -120,7 +116,7 @@ acctEnquiry.post('/enquiry', function (req, res) {
 
 
         // Send a response
-        res.status(201).json({
+        res.status(200).json({
             "Status": [
                 "201"
             ],
