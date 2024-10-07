@@ -113,10 +113,10 @@ razorpayRouter.post('/payee', function (req, res) {
 
 razorpayRouter.post('/payoutSuccess', function (req, res) {
   setTimeout(() => {
-    res.status(200).json({"Status":["201"],"Response":[{"instant_payout_batch_status":["PROCESSED_ALL_SUCCESSFUL"],"instant_payout_batch_status_code":["10"],"instant_payout_batch_date":["Fri Jun 07 00:04:55 MYT 2024"],"instant_payout_batch":["BULKPAY_07062024_000447480_355"]}],"Date":["Fri Jun 07 00:04:55 MYT 2024"]})
-    
+    res.status(200).json({ "Status": ["201"], "Response": [{ "instant_payout_batch_status": ["PROCESSED_ALL_SUCCESSFUL"], "instant_payout_batch_status_code": ["10"], "instant_payout_batch_date": ["Fri Jun 07 00:04:55 MYT 2024"], "instant_payout_batch": ["BULKPAY_07062024_000447480_355"] }], "Date": ["Fri Jun 07 00:04:55 MYT 2024"] })
+
   }, 10000)
-  
+
 });
 
 razorpayRouter.post('/status/success', function (req, res) {
@@ -137,7 +137,7 @@ razorpayRouter.post('/status/failed', function (req, res) {
 
 razorpayRouter.post('/status/failed2', function (req, res) {
   res.status(200).json(
-    {"Status":["409"],"Message":["Instant Transfer : ERROR (could not extract ResultSet; nested exception is org.hibernate.exception.GenericJDBCException: could not extract ResultSet)"],"Date":["Mon Mar 18 21:25:31 MYT 2024"]}
+    { "Status": ["409"], "Message": ["Instant Transfer : ERROR (could not extract ResultSet; nested exception is org.hibernate.exception.GenericJDBCException: could not extract ResultSet)"], "Date": ["Mon Mar 18 21:25:31 MYT 2024"] }
   )
 
 });
@@ -335,5 +335,15 @@ razorpayRouter.post('/balance', function (req, res) {
 
 });
 
+
+razorpayRouter.post('/IBG/payoutSuccess', function (req, res) {
+  setTimeout(() => {
+    res.status(200).json(
+      {"Status":["201"],"Response":[{"ibg_payout_batch_status":["PROCESSED_ALL_SUCCESSFUL"],"ibg_payout_batch_status_code":["10"],"ibg_payout_batch_date":["Fri Jun 07 00:04:55 MYT 2024"],"ibg_payout_batch":["BULKPAY_07062024_000447480_355"]}],"Date":["Fri Jun 07 00:04:55 MYT 2024"]}
+    )
+
+  }, 10000)
+
+});
 
 module.exports = { razorpayRouter }
