@@ -7,15 +7,12 @@ const { payoutRouter } = require('./routers/payout-service')
 const { razorpayRouter } = require('./routers/razorpay-payout')
 const { callBackRouter } = require('./routers/callback')
 
-
 const { amBankRouter } = require('./routers/ambank-payout')
-
 const { notificationRouter } = require('./routers/notification')
-
 const { acctEnquiry } = require('./routers/account-enquiry')
+const { curlecEwalletRouter } = require('./routers/ewallet-payout-service')
 
 const server = express();
-
 
 // middleware
 server.use(morgan("tiny"));
@@ -28,7 +25,8 @@ server.use('/api/PaymentAPI/v3.0',amBankRouter)
 server.use('/curlec-services/payouts',razorpayRouter)
 server.use('/mobi/payout',notificationRouter)
 server.use('/merchant',callBackRouter)
-server.use('/curlec-services/payouts/payee',acctEnquiry)
+server.use('/curlec-services/payouts/payee', acctEnquiry)
+server.use('/curlec-services/payouts/ewallet', curlecEwalletRouter)
 
 
 const startServer = async () => {
@@ -45,7 +43,6 @@ const startServer = async () => {
 
 
 startServer();
-
 
 
 server.get('/api/process-fpx-no-re', (req, res) => {
