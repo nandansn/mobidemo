@@ -307,7 +307,7 @@ razorpayRouter.post('/balance', function (req, res) {
   setTimeout(function () {
     let { amount } = req.query;
 
-    amount = amount ? amount : "750000.00"
+    amount = amount ? amount : "780167295.49"
 
     res.status(200).json(
       {
