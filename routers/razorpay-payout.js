@@ -57,6 +57,15 @@ const razorpayRouter = express.Router();
 // });
 
 
+razorpayRouter.post("/login", function (req, res) {
+  res.setHeader('set-cookie', 'JSESSIONID=f217069e-c7ce-47c1-ab7e-a8bb10f06ac0; Path=/; HttpOnly');
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+
+  
+  res.end('Cookie has been set');
+})
+
+
 razorpayRouter.post('/payout', function (req, res) {
 
 
