@@ -352,14 +352,57 @@ razorpayRouter.post('/balance', function (req, res) {
 });
 
 
-razorpayRouter.post('/IBG/payoutSuccess', function (req, res) {
+// razorpayRouter.post('/IBG/payoutSuccess', function (req, res) {
+//   setTimeout(() => {
+//     res.status(200).json(
+//       {"Status":["201"],"Response":[{"ibg_payout_batch_status":["PROCESSED_ALL_SUCCESSFUL"],"ibg_payout_batch_status_code":["10"],"ibg_payout_batch_date":["Fri Jun 07 00:04:55 MYT 2024"],"ibg_payout_batch":["BULKPAY_07062024_000447480_355"]}],"Date":["Fri Jun 07 00:04:55 MYT 2024"]}
+//     )
+
+//   }, 10000)
+
+// });
+
+
+// razorpayRouter.post('/INSTANT/payoutSuccess/7', function (req, res) {
+//   setTimeout(() => {
+//     res.status(200).json(
+//       {"Status":["201"],"Response":[{"instant_payout_batch_status":["BANK_PROCESSING"],"instant_payout_batch_status_code":["7"],"instant_payout_batch_date":["Fri Jun 07 00:04:55 MYT 2024"],"instant_payout_batch":["BULKPAY_07062024_000447480_355"]}],"Date":["Fri Jun 07 00:04:55 MYT 2024"]}
+//     )
+
+//   }, 10000)
+
+// });
+
+razorpayRouter.post('/INSTANT/payoutSuccess/7', function (req, res) {
   setTimeout(() => {
     res.status(200).json(
-      {"Status":["201"],"Response":[{"ibg_payout_batch_status":["PROCESSED_ALL_SUCCESSFUL"],"ibg_payout_batch_status_code":["10"],"ibg_payout_batch_date":["Fri Jun 07 00:04:55 MYT 2024"],"ibg_payout_batch":["BULKPAY_07062024_000447480_355"]}],"Date":["Fri Jun 07 00:04:55 MYT 2024"]}
+      {"Status":["201"],"Response":[{"instant_payout_batch_status":["BANK_PROCESSING"],"instant_payout_batch_status_code":["7"],"instant_payout_batch_date":["Fri Jun 07 00:04:55 MYT 2024"],"instant_payout_batch":["BULKPAY_07062024_000447480_355"]}],"Date":["Fri Jun 07 00:04:55 MYT 2024"]}
     )
 
   }, 10000)
 
 });
+
+
+razorpayRouter.post('/IBG/payoutSuccess/7', function (req, res) {
+  setTimeout(() => {
+    res.status(200).json(
+      {"Status":["201"],"Response":[{"instant_payout_batch_status":["BANK_PROCESSING"],"instant_payout_batch_status_code":["7"],"instant_payout_batch_date":["Fri Jun 07 00:04:55 MYT 2024"],"instant_payout_batch":["BULKPAY_07062024_000447480_355"]}],"Date":["Fri Jun 07 00:04:55 MYT 2024"]}
+    )
+
+  }, 10000)
+
+});
+
+razorpayRouter.post('/ewallet/success/7', function (req, res) {
+  setTimeout(() => {
+    res.status(200).json(
+      {"Status":["201"],"Response":[{"duitnow_payout_batch_date":["Sat Oct 05 00:13:03 MYT 2024"],"duitnow_payout_batch_status_code":["7"],"duitnow_payout_batch":["BULKPAY_05102024_001251051_990"],"duitnow_payout_batch_status":["BANK_PROCESSING"]}],"Date":["Sat Oct 05 00:13:03 MYT 2024"]}
+    )
+
+  }, 10000)
+
+});
+
 
 module.exports = { razorpayRouter }
