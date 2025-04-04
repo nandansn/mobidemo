@@ -21,7 +21,7 @@ server.use(express.json());
 server.use(bodyParser.json());
 
 server.use('/api/v1',payoutRouter)
-server.use('/api/PaymentAPI/v3.0',amBankRouter)
+server.use('/api/ambank',amBankRouter)
 server.use('/curlec-services/payouts',razorpayRouter)
 server.use('/mobi/payout',notificationRouter)
 server.use('/merchant',callBackRouter)
