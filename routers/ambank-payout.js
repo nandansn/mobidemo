@@ -47,25 +47,30 @@ amBankRouter.post('/oauth/v2.0/token', function (req, res) {
 
 
 amBankRouter.post('/PaymentAPI/v3.0/GetAccountEnquiry/:srcRefNo', function (req, res) {
-
     const sourceRefID = req.params.srcRefNo;
 
-    if (sourceRefID === '2025') {
-        res.status(200).json({
+    if (!sourceRefID || sourceRefID.length < 2) {
+        return res.status(400).json({
+            "ResponseCode": "000009",
+            "ResponseMessage": "Invalid source reference number"
+        });
+    }
+
+    const lastTwoDigits = Number(sourceRefID.slice(-2));
+    const isEven = lastTwoDigits % 2 === 0;
+
+    if (isEven) {
+        return res.status(200).json({
             "creditorAccountName": "MOBI ASIA SDN. BHD.",
             "creditorAccountType": "CACC",
             "lookUpReference": "20250327ARBKMYKL510B18192155"
         });
-    }
-
-    else {
-        res.status(401).json({
+    } else {
+        return res.status(401).json({
             "ResponseCode": "000007",
             "ResponseMessage": "Signature Mismatch"
         });
     }
-
-
 });
 
 amBankRouter.post('/PaymentAPI/v3.0/PostCreditTransfer/:srcRefNo', function (req, res) {
